@@ -19,7 +19,8 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: echo tests
+        run: |
           echo "🎉 The job was triggered by event: ${{ github.event_name }}"
           echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
           echo "🔎 The short name of your branch is ${{ github.ref_name }}."
