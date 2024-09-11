@@ -33,7 +33,8 @@ jobs:
     needs: Build
     environment: Test
     steps:
-      - run: "🧪 Testing... ${{ github.event.inputs.environment }}" 
+      - run: |
+          echo "🧪 Testing... ${{ github.event.inputs.environment }}" 
   Load-Test:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
@@ -49,7 +50,7 @@ jobs:
     environment:
       name: Production
       url: https://writeabout.net
-    if: github.event.inputs.environment == 'Production'
+    if: github.event.inputs.environment == 'Production' && github.ref == 'main'
     steps:
       - run: |
           echo "🚀 Step 1..."
