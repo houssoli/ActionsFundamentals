@@ -21,7 +21,8 @@ jobs:
     steps:
       - run: |
           echo "🎉 The job was triggered by event: ${{ github.event_name }}"
-          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ."
+          echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+          echo "🔎 The short name of your branch is ${{ github.ref_name }}."
       - uses: actions/checkout@v4.1.7
       - name: List all files in the repository
         run: |
@@ -50,7 +51,7 @@ jobs:
     environment:
       name: Production
       url: https://writeabout.net
-    if: github.event.inputs.environment == 'Production' && github.ref == 'main'
+    if: ${{ github.event.inputs.environment == 'Production' }}
     steps:
       - run: |
           echo "🚀 Step 1..."
